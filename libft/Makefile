@@ -6,7 +6,7 @@
 #    By: asultanb <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/18 20:14:05 by asultanb          #+#    #+#              #
-#    Updated: 2019/11/03 16:10:21 by asultanb         ###   ########.fr        #
+#    Updated: 2019/11/06 17:27:53 by asultanb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ F_N		:= 	ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr \
 			get_next_line
 
 SRC		:=	$(addsuffix .c, $(F_N))
-OBJ		:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
+OBJ		:=	$(addsuffix .o, $(F_N))
 
 INCL 	:=	-I libft.h
 
@@ -36,17 +36,16 @@ INCL 	:=	-I libft.h
 
 all: $(NAME)
 
-objects/%.o: %.c
-	@/bin/mkdir -p objects
+%.o: %.c
 	@gcc $(FLAGS) -c $(INCL) $< -o $@
 
 $(NAME): $(OBJ) 
 	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	@/bin/rm -r objects
+	@/bin/rm -rf $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
-re: fclean $(NAME) all
+re: fclean all
