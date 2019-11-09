@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/06 17:19:20 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:23:41 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int		main(void)
 {
-	int a = 5;
+//	int a = 5;
 
 	printf("orig - string:\t\t%s\n", "hello");
-	printf("orig - char:\t\t%c\n", 'x');
-	printf("orig - pointer:\t\t%p\n", &a);
-	//printf("decimal: %d\n", 42);
+	printf("orig - char:\t\t%55c\n", 'x');
+//	printf("orig - pointer:\t\t%p\n", &a);
+	
+//	ft_printf("decimal: %d\n", 42);
 	//printf("integer: %i\n", 4242);
 
 	//ft_printf("mine - string: %s\n", "hello");

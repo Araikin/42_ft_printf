@@ -1,6 +1,6 @@
 NAME		:= 	ft_printf
 FLAGS		:=	-Wall -Wextra -Werror
-F_N			:=	main
+F_N			:=	main ft_printf process_format
 SRC			:=	$(addsuffix .c, $(F_N))	
 OBJ			:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
 

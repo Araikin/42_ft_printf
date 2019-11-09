@@ -6,6 +6,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 # include "libft/libft.h"
 
@@ -14,6 +15,7 @@
 # define HASH	4
 # define SPACE	8
 # define ZERO	16
+
 //# define ASTER	32
 //# define DOLLAR 64
 
@@ -27,5 +29,6 @@ typedef struct		s_format
 }					t_format;
 
 int					ft_printf(const char *format, ...);
+void				process_format(va_list *argp, char *format, int *i, int *num);
 
 #endif
