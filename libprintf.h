@@ -1,5 +1,5 @@
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBPRINTF_H
+# define LIBPRINTF_H
 
 # include <stdio.h>
 
@@ -16,19 +16,16 @@
 # define SPACE	8
 # define ZERO	16
 
-//# define ASTER	32
-//# define DOLLAR 64
-
-typedef struct		s_format
+typedef struct		s_fmt
 {
 	char			specifier;
 	unsigned int	length : 5;
-	unsigned int	flags : 5; // '0' '-' '+' ' ' '#'  // '*' '$'
+	unsigned int	flags : 5; // '0' '-' '+' ' ' '#'
 	int				precision;
 	int				width;
-}					t_format;
+}					t_fmt;
 
-int					ft_printf(const char *format, ...);
-void				process_format(va_list *argp, char *format, int *i, int *num);
+int					ft_printf(const char *fmt, ...);
+void				proc_fmt(va_list *argp, char *fmt, int *i, int *num);
 
 #endif

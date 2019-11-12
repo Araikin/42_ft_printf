@@ -6,28 +6,28 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:06:06 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/08 13:45:54 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:29:27 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libprintf.h"
 
-int		ft_printf(const char *format, ...)
+int		ft_printf(const char *fmt, ...)
 {
 	int		i;
 	int		num;
 	va_list	argp;
 	
-	va_start(argp, format);
+	va_start(argp, fmt);
 	i = 0;
 	num = 0;
-	while (format[i])
+	while (fmt[i])
 	{
-		if (format[i] == '%')
-			process_format(&argp, (char*)format, &i, &num);
+		if (fmt[i] == '%')
+			proc_fmt(&argp, (char*)fmt, &i, &num);
 		else
 		{
-			ft_putchar(format[i++]);
+			ft_putchar(fmt[i++]);
 			num++;
 		}
 	}

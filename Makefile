@@ -1,8 +1,9 @@
 NAME		:= 	ft_printf
 FLAGS		:=	-Wall -Wextra -Werror
-F_N			:=	main ft_printf process_format
+F_N			:=	main ft_printf proc_fmt
 SRC			:=	$(addsuffix .c, $(F_N))	
 OBJ			:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
+INCL		:=	libprintf.h
 
 LIB			:=	libft
 LIB_LINK	:=	-L $(LIB) -l ft
