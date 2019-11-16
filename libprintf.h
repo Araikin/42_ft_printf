@@ -25,7 +25,16 @@ typedef struct		s_fmt
 	int				width;
 }					t_fmt;
 
+typedef struct		s_dt
+{
+	char			specifier;
+	int				(*func)(va_list, t_fmt);
+}					t_dt;
+
+t_dt				g_dt[];
+
 int					ft_printf(const char *fmt, ...);
 void				proc_fmt(va_list *argp, char *fmt, int *i, int *num);
+t_fmt				*init_fmt(void);
 
 #endif
