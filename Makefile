@@ -1,9 +1,9 @@
-NAME		:= 	ft_printf
+NAME		:= 	libftprintf.a
 FLAGS		:=	-Wall -Wextra -Werror
-F_N			:=	main ft_printf proc_fmt
-SRC			:=	$(addsuffix .c, $(F_N))	
+F_N			:=	ft_printf parse specifiers
+SRC			:=	$(addprefix sources/, $(addsuffix .c, $(F_N)))
 OBJ			:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
-INCL		:=	libprintf.h
+INCL		:=	includes
 
 LIB			:=	libft
 LIB_LINK	:=	-L $(LIB) -l ft
@@ -12,14 +12,18 @@ LIB_LINK	:=	-L $(LIB) -l ft
 
 all	: $(NAME)
 
-objects/%.o : %.c
+objects/%.o : sources/%.c
 	@/bin/mkdir -p objects
-	@gcc $(FLAGS) -c $(INCL) $< -o $@
+	@gcc $(FLAGS) -I $(INCL) -c $< -o $@
 
 $(NAME)	: $(OBJ)
 	@make -C $(LIB)
-	@gcc $(LIB_LINK) $(OBJ) -o $(NAME)
+	@ar rc $(NAME) $(OBJ) libft/*.o
+	@ranlib $(NAME)
 	
+compile:
+	@gcc -o xx main.c -L . -lftprintf -I $(INCL)
+
 clean:
 	@/bin/rm -rf objects
 	@make -C libft clean

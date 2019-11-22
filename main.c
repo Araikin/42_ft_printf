@@ -6,18 +6,20 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/11 17:59:00 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/21 18:14:58 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprintf.h"
+#include "includes/ft_printf.h"
 
 int		main(void)
 {
 //	int a = 5;
 
-	printf("char c: %c\n", 'a');
-	printf("char C: %C\n", 'b');
+//	printf("char c: %c\n", 'a');
+//	printf("char C: %C\n", 'b');
+
+	ft_printf("expected:\tc - x\noutput:\t\tc - %c\n", 'x');
 
 	/*
 	printf("orig - string:\t\t%s\n", "hello");
