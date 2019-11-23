@@ -21,15 +21,6 @@ int		is_specifier(char c)
 	return (c == 'c');
 }
 
-void	get_specifier(char *params, t_format *data)
-{
-	int	pos = 0;
-	while (params[pos] && !is_specifier(params[pos]))
-		pos++;
-	if (is_specifier(params[pos]))
-		data->specifier = params[pos];
-}
-
 char	*get_all_params(char *format, int i)
 {
 	char	*params;
@@ -54,17 +45,18 @@ char	*get_all_params(char *format, int i)
 	return (params);
 }
 
-void	set_data(t_format *data, char *format, int *i)
+void	set_params(t_format *data, char *format, int *i)
 {
 	char *params;
 
 	params = get_all_params(format, *i);
+	get_width(params, data);
 	get_specifier(params, data);
 	*i += ft_strlen(params);
 	ft_strdel(&params);
 }
 
-int		implement_data(va_list *argp, t_format *data)
+int		apply_params(va_list *argp, t_format *data)
 {
 	int	i;
 	int	len;
@@ -91,8 +83,8 @@ int		parse_format(va_list *argp, char *format, int *i)
 	if (!(data = initialize_format()))
 		return (0);
 	*i += 1;
-	set_data(data, format, i);
+	set_params(data, format, i);
 	if (data->specifier == '\0')
 		return (clear_format(data));
-	return (implement_data(argp, data));
+	return (apply_params(argp, data));
 }
