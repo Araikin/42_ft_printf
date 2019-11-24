@@ -34,13 +34,14 @@
 # define LL		2
 # define H		4
 # define HH		8
+# define UL		16
 
 # define SPECS	"cspdDiouUxXfZ%"
 
 typedef struct		s_format
 {
 	char			specifier;
-	int				length : 4;
+	int				length : 5;
 	int				flags : 5;
 	int				precision;
 	int				width;
@@ -60,13 +61,14 @@ int					apply_params(va_list *argp, t_format *data);
 
 void				set_flags(char *params, t_format *data, int *pos);
 void				set_width(char *params, t_format *data, int *pos);
-//void				set_precision(char *params, t_format *data);
-//void				set_length(char *params, t_format *data);
-void				set_specifier(char *params, t_format *data);
+void				set_precision(char *params, t_format *data, int *pos);
+void				set_length(char *params, t_format *data, int *pos);
+void				set_specifier(char *params, t_format *data, int *pos);
 
 int					is_flag(char c);
 int					is_specifier(char c);
 int					is_digit(char c);
+int					is_length(char *params, int i);
 
 int					c_specifier(va_list *argp, t_format *data);
 

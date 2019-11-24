@@ -43,13 +43,53 @@ void	set_width(char *params, t_format *data, int *pos)
 	data->width = width;
 }
 
-void	set_specifier(char *params, t_format *data)
+void	set_precision(char *params, t_format *data, int *pos)
 {
-	int	i;
+	int	precision;
 
-	i = 0;
-	while (params[i] && !is_specifier(params[i]))
-		i++;
-	if (is_specifier(params[i]))
-		data->specifier = params[i];
+	precision = 0;
+	if (params[*pos] && params[*pos] == '.')	
+	{
+		*pos += 1;
+		while (params[*pos] && is_digit(params[*pos]))
+		{
+			precision = precision * 10 + (params[*pos] - '0');
+			*pos += 1;
+		}
+	}
+	data->precision = precision;
+}
+
+void	set_length(char *params, t_format *data, int *pos)
+{
+	int	result;
+
+	result = 0;
+	if (params[*pos] && params[*pos + 1])
+	{
+		result = is_length(params, *pos);
+		if (result == 1)
+			data->length |= L;
+		else if (result == 2)
+			data->length |= LL;
+		else if (result == 3)
+			data->length |= H;
+		else if (result == 4)
+			data->length |= HH;
+		else if (result == 5)
+			data->length |= UL;
+	}
+	if (result > 0 && result % 2 == 1)
+		*pos += 1;
+	else if (result > 0 && result % 2 == 0)
+		*pos += 2;
+}
+
+void	set_specifier(char *params, t_format *data, int *pos)
+{
+	if (is_specifier(params[*pos]))
+	{
+		data->specifier = params[*pos];
+		*pos += 1;
+	}
 }

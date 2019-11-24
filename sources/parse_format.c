@@ -16,7 +16,7 @@ t_specifiers	*g_dispatch[] = {
 	c_specifier,
 };
 
-int		parse_format(va_list *argp, char *format, int *i)
+int		parse_format(va_list *argp, char *format, int *len)
 {
 	t_format	*data;
 	char		*result;
@@ -24,26 +24,26 @@ int		parse_format(va_list *argp, char *format, int *i)
 	result = NULL;
 	if (!(data = initialize_format()))
 		return (0);
-	*i += 1;
-	set_params(data, format, i);
+	*len += 1;
+	set_params(data, format, len);
 	if (data->specifier == '\0')
 		return (clear_format(data));
 	return (apply_params(argp, data));
 }
 
-void	set_params(t_format *data, char *format, int *i)
+void	set_params(t_format *data, char *format, int *len)
 {
 	char	*params;
 	int		pos;
 
 	pos = 0;
-	params = get_all_params(format, *i);
+	params = get_all_params(format, *len);
 	set_flags(params, data, &pos);
 	set_width(params, data, &pos);
-//	set_precision(params, data, &pos);
-//	set_length(params, data, &pos);
-	set_specifier(params, data);
-	*i += ft_strlen(params);
+	set_precision(params, data, &pos);
+	set_length(params, data, &pos);
+	set_specifier(params, data, &pos);
+	*len += pos;
 	ft_strdel(&params);
 }
 

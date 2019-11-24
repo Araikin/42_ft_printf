@@ -28,3 +28,18 @@ int		is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
+
+int		is_length(char *params, int i)
+{
+	if (params[i] == 'l' && params[i + 1] != 'l')
+		return (1);
+	if (params[i] == 'l' && params[i + 1] == 'l')
+		return (2);
+	if (params[i] == 'h' && params[i + 1] != 'h')
+		return (3);
+	if (params[i] == 'h' && params[i + 1] == 'h')
+		return (4);
+	if (params[i] == 'L')
+		return (5);
+	return (-1);
+}

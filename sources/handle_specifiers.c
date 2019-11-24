@@ -17,16 +17,23 @@ int		c_specifier(va_list *argp, t_format *data)
 	int c;
 
 	c = va_arg(*argp, int);
+
 	if (data->specifier == 'c')
+	{
+		if (data->width == 0)
+			data->width = 1;
 		adjust_width_c(data, (char)c);
-	if (data->width == 0)
-		data->width = 1;
+	}
 	return (data->width);
 }
 
+/*
 int		s_specifier(va_list *argp, t_format *data)
 {
 	char *str;
 
 	str = va_arg(*argp, int);
+	if (data->specifier == 's')
+		adjust_width(data, char)
 }
+*/
