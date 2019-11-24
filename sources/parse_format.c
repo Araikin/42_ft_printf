@@ -1,30 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 13:19:22 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/21 18:05:05 by asultanb         ###   ########.fr       */
+/*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
+/*   Updated: 2019/11/23 17:00:43 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_specifiers    *g_dispatch[] = {
+t_specifiers	*g_dispatch[] = {
 	c_specifier,
 };
 
-int		is_specifier(char c)
+int		parse_format(va_list *argp, char *format, int *i)
 {
-	return (c == 'c');
+	t_format	*data;
+	char		*result;
+
+	result = NULL;
+	if (!(data = initialize_format()))
+		return (0);
+	*i += 1;
+	set_params(data, format, i);
+	if (data->specifier == '\0')
+		return (clear_format(data));
+	return (apply_params(argp, data));
+}
+
+void	set_params(t_format *data, char *format, int *i)
+{
+	char	*params;
+	int		pos;
+
+	pos = 0;
+	params = get_all_params(format, *i);
+	set_flags(params, data, &pos);
+	set_width(params, data, &pos);
+//	set_precision(params, data, &pos);
+//	set_length(params, data, &pos);
+	set_specifier(params, data);
+	*i += ft_strlen(params);
+	ft_strdel(&params);
 }
 
 char	*get_all_params(char *format, int i)
 {
 	char	*params;
-	int		pos;	
+	int		pos;
 
 	pos = 0;
 	while (format[i + pos] && !is_specifier(format[i + pos]))
@@ -45,17 +71,6 @@ char	*get_all_params(char *format, int i)
 	return (params);
 }
 
-void	set_params(t_format *data, char *format, int *i)
-{
-	char *params;
-
-	params = get_all_params(format, *i);
-	get_width(params, data);
-	get_specifier(params, data);
-	*i += ft_strlen(params);
-	ft_strdel(&params);
-}
-
 int		apply_params(va_list *argp, t_format *data)
 {
 	int	i;
@@ -72,19 +87,4 @@ int		apply_params(va_list *argp, t_format *data)
 		i++;
 	}
 	return (len);
-}
-
-int		parse_format(va_list *argp, char *format, int *i)
-{
-	t_format	*data;
-	char		*result;
-
-	result = NULL;
-	if (!(data = initialize_format()))
-		return (0);
-	*i += 1;
-	set_params(data, format, i);
-	if (data->specifier == '\0')
-		return (clear_format(data));
-	return (apply_params(argp, data));
 }

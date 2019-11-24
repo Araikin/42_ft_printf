@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/21 18:14:58 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/23 17:08:38 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,9 @@
 
 int		main(void)
 {
-//	int a = 5;
+	ft_printf("%-05c\n", '5');
+	printf("%-05c\n", '5');
 
-//	printf("char c: %c\n", 'a');
-//	printf("char C: %C\n", 'b');
-
-	ft_printf("expected:\tc - x\noutput:\t\tc - %c\n", 'x');
-
-	/*
-	printf("orig - string:\t\t%s\n", "hello");
-	printf("orig - char:\t\t%55c\n", 'x');
-	*/
-//	printf("orig - pointer:\t\t%p\n", &a);
-	
-//	ft_printf("decimal: %d\n", 42);
-	//printf("integer: %i\n", 4242);
-
-	//ft_printf("mine - string: %s\n", "hello");
-	//ft_printf("mine - char: %c\n", 'x');
-		
 /* string specifier tests */
 
 	/*
