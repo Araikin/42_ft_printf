@@ -14,6 +14,7 @@
 
 t_specifiers	*g_dispatch[] = {
 	c_specifier,
+	s_specifier,
 };
 
 int		parse_format(va_list *argp, char *format, int *len)

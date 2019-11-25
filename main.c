@@ -14,8 +14,12 @@
 
 int		main(void)
 {
-	ft_printf("%5&c\n", '5');
-	printf("%5&c\n", '5');
+
+//	ft_printf("%5.2s\n", "hello");
+//	printf("%5.2s\n", "hello");
+	
+	ft_printf("%-5c\n", 'h');
+	printf("%-5c\n", 'h');
 
 /* string specifier tests */
 

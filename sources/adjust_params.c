@@ -12,6 +12,16 @@
 
 #include "../includes/ft_printf.h"
 
+void	adjust_width(t_format *data, char *str)
+{
+	int	width;
+	(void)str;
+
+	width = data->width - 1;
+//	printf("%s\n", str);
+}
+
+/*
 void	adjust_width_c(t_format *data, char c)
 {
 	int		width;
@@ -34,3 +44,4 @@ void	adjust_width_c(t_format *data, char c)
 	else
 		ft_putchar(c);
 }
+*/

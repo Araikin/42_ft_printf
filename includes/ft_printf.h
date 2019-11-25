@@ -71,7 +71,9 @@ int					is_digit(char c);
 int					is_length(char *params, int i);
 
 int					c_specifier(va_list *argp, t_format *data);
+int					s_specifier(va_list *argp, t_format *data);
 
 void				adjust_width_c(t_format *data, char c);
+void				adjust_width(t_format *data, char *str);
 
 #endif
