@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/23 15:09:57 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:07:11 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int					is_length(char *params, int i);
 int					c_specifier(va_list *argp, t_format *data);
 int					s_specifier(va_list *argp, t_format *data);
 
-void				adjust_width_c(t_format *data, char c);
 void				adjust_width(t_format *data, char *str);
+void				adjust_width_c(t_format *data, int c);
+
+int					ft_min(int a, int b);
 
 #endif

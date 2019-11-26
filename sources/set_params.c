@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:29:56 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/23 17:04:24 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:26:59 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,13 @@ void	set_width(char *params, t_format *data, int *pos)
 void	set_precision(char *params, t_format *data, int *pos)
 {
 	int	precision;
+	int	flag;
 
+	flag = 0;
 	precision = 0;
 	if (params[*pos] && params[*pos] == '.')	
 	{
+		flag = 1;
 		*pos += 1;
 		while (params[*pos] && is_digit(params[*pos]))
 		{
@@ -57,6 +60,8 @@ void	set_precision(char *params, t_format *data, int *pos)
 			*pos += 1;
 		}
 	}
+	if (precision == 0 && flag)
+		precision = -1;
 	data->precision = precision;
 }
 

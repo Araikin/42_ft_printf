@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/23 17:08:38 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:51:14 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,46 @@
 int		main(void)
 {
 
-//	ft_printf("%5.2s\n", "hello");
-//	printf("%5.2s\n", "hello");
-	
-	ft_printf("%-5c\n", 'h');
-	printf("%-5c\n", 'h');
-
 /* string specifier tests */
 
-	/*
-    ft_printf("\nWith width : %-5s %-5s %-5s done", "one", "two", "three");
-    ft_printf("\nWith precision : %.3s done", "abcdef");
-    ft_printf("\nWith width : %10s done", "abcdef");
-    ft_printf("\nWith width and align : %-10s done", "abcdef");
-    ft_printf("\nWith width and precision: : %10.3s done", "abcdef");
-    ft_printf("\nWith width, align and precision: : %-10.3s done", "abcdef");
-    ft_printf("\nWith width and align : %-10s done", "abcdef");
-	*/
+	static char *s_hidden = "hi low\0don't print me lol\0";
 
 	/*
-    printf("\nWith width : %s %s %s done", "one", "two", "three");
-    printf("\nWith precision : %.3s done", "abcdef");
-    printf("\nWith width : %10s done", "abcdef");
-    printf("\nWith width and precision: : %10.3s done", "abcdef");
-    printf("\nWith width, align and precision: : %-10.3s done", "abcdef");
-
+	printf("%+ 3s\n", s_hidden);
+	ft_printf("%+ 3s\n", s_hidden);
+	ft_printf("%32s\n", NULL);
+	printf("%32s\n", NULL);
+	ft_printf("%.0s\n", "hello");
+	printf("%.0s\n", "hello");
+	ft_printf("%.s\n", "hello");
+	printf("%.s\n", "hello");
+    ft_printf("With width and align : %-10s done\n", "abcdef");
+    printf("With width and align : %-10s done\n", "abcdef");
+    ft_printf("With width, align and precision: : %-10.3s done\n", "abcdef");
+    printf("With width, align and precision: : %-10.3s done\n", "abcdef");
+    ft_printf("With width and precision: : %10.3s done\n", "abcdef");
+    printf("With width and precision: : %10.3s done\n", "abcdef");
+    ft_printf("With width and align : %-10s done\n", "abcdef");
+    printf("With width and align : %-10s done\n", "abcdef");
+    ft_printf("With width : %10s done\n", "abcdef");
+    printf("With width : %10s done\n", "abcdef");
+    printf("With width : %-5s %-5s %-5s done\n", "one", "two", "three");
+    ft_printf("With width : %-5s %-5s %-5s done\n", "one", "two", "three");
+    printf("With precision : %.3s done\n", "abcdef");
+    ft_printf("With precision : %.3s done\n", "abcdef");
 	*/
+
     /* char */
 
-    /*
-    ft_printf("\nWith width, align and precision: : %-5c done", '$');
-    ft_printf("\nWith width, align and precision: : %10c done", '$');
-    ft_printf("\nWith width, align and precision: : %-10c done", '$');
-	*/
 	/*
-    printf("\nWith width, align and precision: : %c done", '$');
-    printf("\nWith width, align and precision: : %10c done", '$');
-    printf("\nWith width, align and precision: : %-10c done", '$');
+    ft_printf("With width, align and precision: : %c done\n", '$');
+    printf("With width, align and precision: : %c done\n", '$');
+    ft_printf("With width, align and precision: : %-10c done\n", '$');
+    printf("With width, align and precision: : %-10c done\n", '$');
+    ft_printf("With width, align and precision: : %10c done\n", '$');
+    printf("With width, align and precision: : %10c done\n", '$');
+    ft_printf("With width, align and precision: : %-5c done\n", '$');
+    printf("With width, align and precision: : %-5c done\n", '$');
 	*/
 
     /* address */

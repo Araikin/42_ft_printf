@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_specifiers.c                                :+:      :+:    :+:   */
+/*   helper_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/23 13:32:55 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/25 16:33:16 by asultanb         ###   ########.fr       */
+/*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
+/*   Updated: 2019/11/25 15:30:59 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		c_specifier(va_list *argp, t_format *data)
+int		ft_min(int a, int b)
 {
-	int c;
-
-	c = va_arg(*argp, int);
-	if (data->specifier == 'c')
-		adjust_width_c(data, c);
-	return (data->width);
-}
-
-int		s_specifier(va_list *argp, t_format *data)
-{
-	char 	*str;
-
-	str = va_arg(*argp, char *);
-	adjust_width(data, str);
-	return (data->width);
+	if (a < b)
+		return (a);
+	else
+		return (b);
 }
