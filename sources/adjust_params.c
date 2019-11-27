@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 17:01:21 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/25 16:51:00 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:20:01 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void	adjust_width_c(t_format *data, int c)
 		ft_putchar(c);
 }
 
-void	adjust_width(t_format *data, char *str)
+int		adjust_width(t_format *data, char *str)
 {
 	int		width_rem;
 	int		len;
 	char	flag;
 	int		i;
+	int		count;
 
 	str = (str == NULL) ? "(null)" : str;
 	len = (int)ft_strlen(str);
@@ -47,21 +48,11 @@ void	adjust_width(t_format *data, char *str)
 	if (data->flags & MINUS)
 		while (len-- && str[i])
 			ft_putchar(str[i++]);
+	count = len + width_rem;
 	while (width_rem--)
 		ft_putchar(flag);
 	if (len > 0 && (!(data->flags) || !(data->flags & MINUS)))
 		while (len-- && str[i])
 			ft_putchar(str[i++]);
+	return (count);
 }
-
-/*
-void	adjust_precision(t_format *data, char *str)
-{
-	int i;
-	int	precision;
-
-	i = 0;
-	precision = (data->precision > ft_strlen(str) ? )
-	while (str[i] )
-}
-*/

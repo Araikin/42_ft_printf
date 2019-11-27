@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/25 16:11:48 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:41:04 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_specifiers	*g_dispatch[] = {
 	c_specifier,
 	s_specifier,
+	p_specifier,
 };
 
 int		parse_format(va_list *argp, char *format, int *len)

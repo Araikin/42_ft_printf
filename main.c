@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/25 16:51:14 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:32:32 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,33 @@
 
 int		main(void)
 {
+    /* address */
 
+    int nb = 2;
+
+	//ft_printf("%9.2p\n", &nb);
+	printf("%9.2p\n", &nb);
+	printf("%9.15p\n", &nb);
+	/*
+    printf("With width, align and precision: : %25p done\n", &nb);
+    ft_printf("With width, align and precision: : %25p done\n", &nb);
+    printf("%i\n", printf("%p\n", &nb));
+    printf("%i\n", ft_printf("%p\n", &nb));
+
+    printf("With width, align and precision: : %-25p done\n", &nb);
+    printf("With width, align and precision: : %025p done\n", &nb);
+    printf("With width, align and precision: : %p done\n", &nb);
+    printf("With width, align and precision: : %015.17p done\n", &nb);
+    ft_printf("\nWith width, align and precision: : %-5p done", &nb);
+    ft_printf("\nWith width, align and precision: : %25p done", &nb);
+    ft_printf("\nWith width, align and precision: : %-25p done", &nb);
+	*/
+ 
 /* string specifier tests */
 
+	/*
 	static char *s_hidden = "hi low\0don't print me lol\0";
 
-	/*
 	printf("%+ 3s\n", s_hidden);
 	ft_printf("%+ 3s\n", s_hidden);
 	ft_printf("%32s\n", NULL);
@@ -57,20 +78,7 @@ int		main(void)
     printf("With width, align and precision: : %-5c done\n", '$');
 	*/
 
-    /* address */
-
-//    int nb = 2;
-	/*
-    ft_printf("\nWith width, align and precision: : %-5p done", &nb);
-    ft_printf("\nWith width, align and precision: : %25p done", &nb);
-    ft_printf("\nWith width, align and precision: : %-25p done", &nb);
-	*/
-	/*
-    printf("\nWith width, align and precision: : %p done", &nb);
-    printf("\nWith width, align and precision: : %25p done", &nb);
-    printf("\nWith width, align and precision: : %-25p done", &nb);
-*/
-    /* signed integer */
+   /* signed integer */
 
     /*
     ft_printf("\nWith basic specifier : %-5d done", 42);
