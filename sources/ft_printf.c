@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:06:06 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/23 17:00:57 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:22:31 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_format	*initialize_format(void)
 
 	if (!(data = malloc(sizeof(data))))
 		return (NULL);
-	data->specifier = '\0';
-	data->precision = 0;
+	data->spec = '\0';
+	data->prec = 0;
 	data->width = 0;
 	data->length = 0;
 	data->flags = 0;

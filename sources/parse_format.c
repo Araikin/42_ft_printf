@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/26 15:41:04 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:42:43 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		parse_format(va_list *argp, char *format, int *len)
 		return (0);
 	*len += 1;
 	set_params(data, format, len);
-	if (data->specifier == '\0')
+	if (data->spec == '\0')
 		return (clear_format(data));
 	return (apply_params(argp, data));
 }
@@ -84,7 +84,7 @@ int		apply_params(va_list *argp, t_format *data)
 		return (0);
 	while (i < 12)
 	{
-		if (SPECS[i] == data->specifier)
+		if (SPECS[i] == data->spec)
 			len = g_dispatch[i](argp, data);
 		i++;
 	}

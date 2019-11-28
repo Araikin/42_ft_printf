@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:55 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/26 16:41:04 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:35:51 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,70 @@ int		c_specifier(va_list *argp, t_format *data)
 int		s_specifier(va_list *argp, t_format *data)
 {
 	char 	*str;
+	int		width_rem;
+	int		len;
+	char	flag;
+	int		count;
 
 	str = va_arg(*argp, char *);
-	return(adjust_width(data, str));
+	str = (str == NULL) ? "(null)" : str;
+	len = (int)ft_strlen(str);
+	flag = (data->flags & ZERO && !(data->flags & MINUS)) ? '0' : ' ';
+	len = (data->prec == 0) ? len : (ft_min(data->prec, len));
+	len = (data->prec == -1) ? 0 : len;
+	width_rem = (data->width - len < 0) ? 0 : (data->width - len); 
+	count = len + width_rem;
+	if (data->flags & MINUS)
+		while (len-- && *str)
+			ft_putchar(*str++);
+	while (width_rem--)
+		ft_putchar(flag);
+	if (len > 0 && (!(data->flags) || !(data->flags & MINUS)))
+		while (len-- && *str)
+			ft_putchar(*str++);
+	return (count);
 }
 
 int		p_specifier(va_list *argp, t_format *data)
 {
 	void	*ptr;
 	char	*str;
+	int		w_rem;
+	int		p_rem;
+	int		len;
 
 	ptr = va_arg(*argp, void *);
-	str = adjust_precision(itoa_base((unsigned long long)ptr, 16, 'l'));
-	str = ft_strjoin("0x", str);
-	return(adjust_width(data, str));
+	str = itoa_base((unsigned long long)ptr, 16, 'l');
+	len = update_rem(&p_rem, &w_rem, str, data);
+	(data->flags & MINUS) ? (ft_putstr("0x")) : (ft_putstr(""));
+	(data->flags & MINUS) ? (print_rem(p_rem, '0')) : ft_putstr("");
+	(data->flags & MINUS) ? (ft_putstr(str)) : ft_putstr("");
+	(data->flags & MINUS) ? print_rem(w_rem, ' ') : ft_putstr("");
+	if ((data->flags && !(data->flags & MINUS)) || !data->flags)
+	{
+		if (data->prec || (!data->prec && !(data->flags & ZERO)))
+		{
+			print_rem(w_rem, ' ');
+			ft_putstr("0x");
+			print_rem(p_rem, '0');
+			ft_putstr(str);
+		}
+		else if (!data->prec && (data->flags & ZERO)) 
+		{
+			ft_putstr("0x");
+			print_rem(w_rem, '0');
+			ft_putstr(str);
+		}
+	}
+	return(len);
 }
+
+/*
+int		d_specifier(va_list *argp, t_format *data)
+{
+	int		n;
+
+	n = va_arg(*argp, void *);
+
+}
+*/

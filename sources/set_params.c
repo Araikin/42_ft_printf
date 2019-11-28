@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:29:56 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/25 16:26:59 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:20:39 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	set_precision(char *params, t_format *data, int *pos)
 	}
 	if (precision == 0 && flag)
 		precision = -1;
-	data->precision = precision;
+	data->prec = precision;
 }
 
 void	set_length(char *params, t_format *data, int *pos)
@@ -94,7 +94,7 @@ void	set_specifier(char *params, t_format *data, int *pos)
 {
 	if (is_specifier(params[*pos]))
 	{
-		data->specifier = params[*pos];
+		data->spec = params[*pos];
 		*pos += 1;
 	}
 }

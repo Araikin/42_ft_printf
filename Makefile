@@ -1,7 +1,7 @@
 NAME		:= 	libftprintf.a
 FLAGS		:=	-Wall -Wextra -Werror
 F_N			:=	ft_printf parse_format verify_params set_params handle_specifiers \
-				adjust_params helper_func
+				helper_func
 SRC			:=	$(addprefix sources/, $(addsuffix .c, $(F_N)))
 OBJ			:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
 INCL		:=	includes

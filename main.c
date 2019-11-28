@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/26 16:32:32 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:35:09 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int		main(void)
     int nb = 2;
 
 	//ft_printf("%9.2p\n", &nb);
-	printf("%9.2p\n", &nb);
-	printf("%9.15p\n", &nb);
+	printf("%020p\n", &nb);
+	ft_printf("%020p\n", &nb);
+//	ft_printf("%020.15p\n", &nb);
+	//ft_printf("%-17p\n", &nb);
+	//printf("%-.15p\n", &nb);
 	/*
     printf("With width, align and precision: : %25p done\n", &nb);
     ft_printf("With width, align and precision: : %25p done\n", &nb);

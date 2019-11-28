@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/26 15:51:17 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:35:56 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,27 @@ char	*itoa_base(unsigned long long n, int base, char c)
 		n /= base;
 	}
 	return (str);
+}
+
+int		update_rem(int *p_rem, int *w_rem, char *str, t_format *data)
+{
+	int		len;
+
+	len = (int)ft_strlen(str);
+	if (data->prec > len)
+		*p_rem = data->prec - len;
+	else
+		*p_rem = 0;
+	if (len + *p_rem + 2 > data->width)
+		*w_rem = 0;
+	else
+		*w_rem = data->width - len - *p_rem - 2;
+	len = len + 2 + *p_rem + *w_rem;
+	return (len);
+}
+
+void	print_rem(int rem, char c)
+{
+	while (rem--)
+		ft_putchar(c);
 }

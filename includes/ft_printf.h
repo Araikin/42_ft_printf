@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/26 16:14:21 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:46:11 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@
 
 typedef struct		s_format
 {
-	char			specifier;
+	char			spec;
 	int				length : 5;
 	int				flags : 5;
-	int				precision;
+	int				prec;
 	int				width;
 }					t_format;
 
@@ -74,11 +74,10 @@ int					c_specifier(va_list *argp, t_format *data);
 int					s_specifier(va_list *argp, t_format *data);
 int					p_specifier(va_list *argp, t_format *data);
 
-int					adjust_width(t_format *data, char *str);
-void				adjust_width_c(t_format *data, int c);
-
 int					ft_min(int a, int b);
 int					ft_numlen(unsigned long long n, int base);
 char				*itoa_base(unsigned long long n, int base, char c);
+int					update_rem(int *prec, int *wid, char *str, t_format *data);
+void				print_rem(int rem, char c);
 
 #endif
