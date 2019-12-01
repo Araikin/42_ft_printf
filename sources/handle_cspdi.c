@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_specifiers.c                                :+:      :+:    :+:   */
+/*   handle_cspdi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/23 13:32:55 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/27 18:35:51 by asultanb         ###   ########.fr       */
+/*   Created: 2019/11/30 13:32:05 by asultanb          #+#    #+#             */
+/*   Updated: 2019/11/30 16:38:54 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		c_specifier(va_list *argp, t_format *data)
+int		handle_c(va_list *argp, t_format *data)
 {
 	int		c;
 	int		width_rem;
@@ -32,7 +32,7 @@ int		c_specifier(va_list *argp, t_format *data)
 	return (data->width);
 }
 
-int		s_specifier(va_list *argp, t_format *data)
+int		handle_s(va_list *argp, t_format *data)
 {
 	char 	*str;
 	int		width_rem;
@@ -59,17 +59,8 @@ int		s_specifier(va_list *argp, t_format *data)
 	return (count);
 }
 
-int		p_specifier(va_list *argp, t_format *data)
+void	adjust_p(t_format *data, int p_rem, int w_rem, char *str)
 {
-	void	*ptr;
-	char	*str;
-	int		w_rem;
-	int		p_rem;
-	int		len;
-
-	ptr = va_arg(*argp, void *);
-	str = itoa_base((unsigned long long)ptr, 16, 'l');
-	len = update_rem(&p_rem, &w_rem, str, data);
 	(data->flags & MINUS) ? (ft_putstr("0x")) : (ft_putstr(""));
 	(data->flags & MINUS) ? (print_rem(p_rem, '0')) : ft_putstr("");
 	(data->flags & MINUS) ? (ft_putstr(str)) : ft_putstr("");
@@ -90,15 +81,62 @@ int		p_specifier(va_list *argp, t_format *data)
 			ft_putstr(str);
 		}
 	}
+}
+
+int		handle_p(va_list *argp, t_format *data)
+{
+	void	*ptr;
+	char	*str;
+	int		w_rem;
+	int		p_rem;
+	int		len;
+
+	ptr = va_arg(*argp, void *);
+	str = itoa_base((unsigned long long)ptr, 16, 'l');
+	if (str[0] == '0' && str[1] == '\0' && data->prec == -1)
+	{
+		ft_putstr("0x");
+		return (2);
+	}
+	len = (int)ft_strlen(str);
+	if (data->prec > len)
+		p_rem = data->prec - len;
+	else
+		p_rem = 0;
+	if (len + p_rem + 2 > data->width)
+		w_rem = 0;
+	else
+		w_rem = data->width - len - p_rem - 2;
+	len = len + 2 + p_rem + w_rem;
+	adjust_p(data, p_rem, w_rem, str);
 	return(len);
 }
 
-/*
-int		d_specifier(va_list *argp, t_format *data)
+int		handle_di(va_list *argp, t_format *data)
 {
 	int		n;
+	int		len;
+	int		p_rem;
+	int		w_rem;
+	char	flag;
 
-	n = va_arg(*argp, void *);
+	n = va_arg(*argp, int);
+	p_rem = 0;
+	w_rem = 0;
+	flag = ' ';
+	len = ft_numlen((unsigned long long)n, 10);
+	if (n < 0)
+		len = ft_numlen((unsigned long long)(n * -1), 10);
+	if (data->flags & ZERO && !(data->flags & MINUS) && !data->prec)
+		flag = '0';
+	if (data->prec > len)
+		p_rem = data->prec - len;
+	if (data->width > ft_max(data->prec, len))
+		w_rem = data->width - ft_max(data->prec, len) - ((n < 0) ? 1 : 0);
+	(data->prec && n < 0) ? ft_putchar('-') : ft_putstr("");
 
+	!(data->flags & MINUS) ? print_rem(w_rem, flag) : print_rem(p_rem, '0');
+	!(data->flags & MINUS) ? print_rem(p_rem, '0') : ft_putnbr(n * -1);
+	!(data->flags & MINUS) ? ft_putnbr(n * -1) : print_rem(w_rem, flag);
+	return (0);
 }
-*/

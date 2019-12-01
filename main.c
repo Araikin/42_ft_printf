@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/27 18:35:09 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:40:47 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,79 @@
 
 int		main(void)
 {
-    /* address */
 
+   /* signed integer */
+
+    ft_printf("mine:%10d\n", -42);
+    printf("original:%10d\n", -42);
+
+	/*
+    ft_printf("\nWith basic specifier length l applied : %ld done", (long int)-2147483647);
+    ft_printf("\nWith basic specifier length h applied : %hd done", (short int)-32767);
+    ft_printf("\nWith basic specifier length ll applied : %lld done", (long long int)9223372036854775807);
+    ft_printf("\nWith basic specifier length hh applied : %hhd done", (signed char)-127);
+	*/
+
+	/*
+    printf("\nWith basic specifier : %d done", 42);
+    printf("\nWith basic specifier length l applied : %ld done", (long int)-2147483647);
+    printf("\nWith basic specifier length h applied : %hd done", (short int)-32767);
+    printf("\nWith basic specifier length ll applied : %lld done", (long long int)9223372036854775807);
+    printf("\nWith basic specifier length hh applied : %hhd done", (signed char)-127);
+	*/
+
+
+    /*
+    ft_printf("\nWith basic specifier and precision : %d done", 42);
+    ft_printf("\nWith basic specifier and precision : %.10d done", 42);
+	*/
+	/*
+    printf("\nWith basic specifier and precision : %d done", 42);
+    printf("\nWith basic specifier and precision : %.10d done", 42);
+*/
+
+    /*
+    ft_printf("\nWith basic specifier and precision : %+d done", 42);
+    ft_printf("\nWith basic specifier and precision : %+d done", -42);
+    ft_printf("\nWith basic specifier and precision : % d done", 42);
+	*/
+	/*
+    printf("\nWith basic specifier and precision : %+d done", 42);
+    printf("\nWith basic specifier and precision : %+d done", -42);
+    printf("\nWith basic specifier and precision : % d done", 42);
+*/
+	/*
+    ft_printf("\nWith basic specifier, width, plus : %+5d done", 42);
+    ft_printf("\nWith basic specifier, width, plus : %+5d done", -42);
+    ft_printf("\nWith basic specifier, width, space : % d done", 42);
+    ft_printf("\nWith basic specifier, width, space : %+.10d done", 42);
+    ft_printf("\nWith basic specifier, width, space : %+5.8d done", 42);
+    ft_printf("\nWith basic specifier, width, space : % 5.8d done", 42);
+    ft_printf("\nWith basic specifier, width, space : %05d done", 42);
+	*/
+
+	/*
+    printf("\nWith basic specifier, width, plus : %+5d done", 42);
+    printf("\nWith basic specifier, width, plus : %+5d done", -42);
+    printf("\nWith basic specifier, width, space : % d done", 42);
+    printf("\nWith basic specifier, width, space : %+.10d done", 42);
+    printf("\nWith basic specifier, width, space : %+5.8d done", 42);
+    printf("\nWith basic specifier, width, space : % 5.8d done", 42);
+    printf("\nWith basic specifier, width, space : %05d done", 42);
+*/
+
+
+
+    /* address */
+/*
     int nb = 2;
 
 	//ft_printf("%9.2p\n", &nb);
-	printf("%020p\n", &nb);
-	ft_printf("%020p\n", &nb);
+	printf("%.0p\n", 0);
+	ft_printf("%.0p\n", 0);
 //	ft_printf("%020.15p\n", &nb);
 	//ft_printf("%-17p\n", &nb);
 	//printf("%-.15p\n", &nb);
-	/*
     printf("With width, align and precision: : %25p done\n", &nb);
     ft_printf("With width, align and precision: : %25p done\n", &nb);
     printf("%i\n", printf("%p\n", &nb));
@@ -80,64 +142,6 @@ int		main(void)
     ft_printf("With width, align and precision: : %-5c done\n", '$');
     printf("With width, align and precision: : %-5c done\n", '$');
 	*/
-
-   /* signed integer */
-
-    /*
-    ft_printf("\nWith basic specifier : %-5d done", 42);
-    ft_printf("\nWith basic specifier length l applied : %ld done", (long int)-2147483647);
-    ft_printf("\nWith basic specifier length h applied : %hd done", (short int)-32767);
-    ft_printf("\nWith basic specifier length ll applied : %lld done", (long long int)9223372036854775807);
-    ft_printf("\nWith basic specifier length hh applied : %hhd done", (signed char)-127);
-	*/
-
-	/*
-    printf("\nWith basic specifier : %d done", 42);
-    printf("\nWith basic specifier length l applied : %ld done", (long int)-2147483647);
-    printf("\nWith basic specifier length h applied : %hd done", (short int)-32767);
-    printf("\nWith basic specifier length ll applied : %lld done", (long long int)9223372036854775807);
-    printf("\nWith basic specifier length hh applied : %hhd done", (signed char)-127);
-	*/
-
-
-    /*
-    ft_printf("\nWith basic specifier and precision : %d done", 42);
-    ft_printf("\nWith basic specifier and precision : %.10d done", 42);
-	*/
-	/*
-    printf("\nWith basic specifier and precision : %d done", 42);
-    printf("\nWith basic specifier and precision : %.10d done", 42);
-*/
-
-    /*
-    ft_printf("\nWith basic specifier and precision : %+d done", 42);
-    ft_printf("\nWith basic specifier and precision : %+d done", -42);
-    ft_printf("\nWith basic specifier and precision : % d done", 42);
-	*/
-	/*
-    printf("\nWith basic specifier and precision : %+d done", 42);
-    printf("\nWith basic specifier and precision : %+d done", -42);
-    printf("\nWith basic specifier and precision : % d done", 42);
-*/
-	/*
-    ft_printf("\nWith basic specifier, width, plus : %+5d done", 42);
-    ft_printf("\nWith basic specifier, width, plus : %+5d done", -42);
-    ft_printf("\nWith basic specifier, width, space : % d done", 42);
-    ft_printf("\nWith basic specifier, width, space : %+.10d done", 42);
-    ft_printf("\nWith basic specifier, width, space : %+5.8d done", 42);
-    ft_printf("\nWith basic specifier, width, space : % 5.8d done", 42);
-    ft_printf("\nWith basic specifier, width, space : %05d done", 42);
-	*/
-
-	/*
-    printf("\nWith basic specifier, width, plus : %+5d done", 42);
-    printf("\nWith basic specifier, width, plus : %+5d done", -42);
-    printf("\nWith basic specifier, width, space : % d done", 42);
-    printf("\nWith basic specifier, width, space : %+.10d done", 42);
-    printf("\nWith basic specifier, width, space : %+5.8d done", 42);
-    printf("\nWith basic specifier, width, space : % 5.8d done", 42);
-    printf("\nWith basic specifier, width, space : %05d done", 42);
-*/
 
     /* percent */
 

@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/27 17:46:11 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:40:53 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@
 
 # include "../libft/libft.h"
 
-
 # define MINUS	1
 # define ZERO	2
 # define PLUS	4
 # define HASH	8
 # define SPACE	16
-
 
 # define L		1
 # define LL		2
@@ -36,7 +34,7 @@
 # define HH		8
 # define UL		16
 
-# define SPECS	"cspdDiouUxXfZ%"
+# define SPECS	"cspdiouxXfZ%"
 
 typedef struct		s_format
 {
@@ -70,14 +68,16 @@ int					is_specifier(char c);
 int					is_digit(char c);
 int					is_length(char *params, int i);
 
-int					c_specifier(va_list *argp, t_format *data);
-int					s_specifier(va_list *argp, t_format *data);
-int					p_specifier(va_list *argp, t_format *data);
+int					handle_c(va_list *argp, t_format *data);
+int					handle_s(va_list *argp, t_format *data);
+void				adjust_p(t_format *data, int p_rem, int w_rem, char *str);
+int					handle_p(va_list *argp, t_format *data);
+int					handle_di(va_list *argp, t_format *data);
 
 int					ft_min(int a, int b);
+int					ft_max(int a, int b);
 int					ft_numlen(unsigned long long n, int base);
 char				*itoa_base(unsigned long long n, int base, char c);
-int					update_rem(int *prec, int *wid, char *str, t_format *data);
 void				print_rem(int rem, char c);
 
 #endif

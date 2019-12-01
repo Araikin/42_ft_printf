@@ -6,16 +6,18 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/27 16:42:43 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/30 13:36:32 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
 t_specifiers	*g_dispatch[] = {
-	c_specifier,
-	s_specifier,
-	p_specifier,
+	handle_c,
+	handle_s,
+	handle_p,
+	handle_di,
+
 };
 
 int		parse_format(va_list *argp, char *format, int *len)
