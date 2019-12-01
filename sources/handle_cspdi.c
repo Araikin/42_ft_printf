@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 13:32:05 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/30 16:38:54 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/11/30 18:05:56 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,15 +112,13 @@ int		handle_p(va_list *argp, t_format *data)
 	return(len);
 }
 
-int		handle_di(va_list *argp, t_format *data)
+int		adjust_di(t_format *data, int64_t n)
 {
-	int		n;
 	int		len;
 	int		p_rem;
 	int		w_rem;
 	char	flag;
 
-	n = va_arg(*argp, int);
 	p_rem = 0;
 	w_rem = 0;
 	flag = ' ';
@@ -133,10 +131,30 @@ int		handle_di(va_list *argp, t_format *data)
 		p_rem = data->prec - len;
 	if (data->width > ft_max(data->prec, len))
 		w_rem = data->width - ft_max(data->prec, len) - ((n < 0) ? 1 : 0);
+
+
 	(data->prec && n < 0) ? ft_putchar('-') : ft_putstr("");
 
 	!(data->flags & MINUS) ? print_rem(w_rem, flag) : print_rem(p_rem, '0');
 	!(data->flags & MINUS) ? print_rem(p_rem, '0') : ft_putnbr(n * -1);
 	!(data->flags & MINUS) ? ft_putnbr(n * -1) : print_rem(w_rem, flag);
 	return (0);
+	
+}
+
+int		handle_di(va_list *argp, t_format *data)
+{
+	int64_t n;
+
+	if (data->length & L)
+		n = va_arg(argp, long int);
+	else if (data->length & LL)
+		n = va_arg(argp, long long int);
+	else if (data->length & H)
+		n = (short int)va_arg(argp, int);
+	else if (data->length & HH)
+		n = (signed char)va_arg(argp, int);
+	else
+		n = va_arg(argp, int);
+	return (adjust_di(data, n));
 }
