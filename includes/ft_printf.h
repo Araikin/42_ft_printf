@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 13:52:12 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 14:38:44 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int					handle_percent(va_list *argp, t_format *data);
 int					adjust_di(t_format *data, int64_t n, int len);
 int					handle_di(va_list *argp, t_format *data);
 void				print_sign(t_format *data, int64_t n, int m, char flag);
-void				di_minus(t_format *data, int64_t n, int p_rem, int w_rem);
-void				di_nominus(t_format *data, int64_t n, int p_rem, int w_rem);
+void				di_minus(t_format *data, int64_t n);
+void				di_nominus(t_format *data, int64_t n);
 
 int					handle_ouxx(va_list *argp, t_format *data);
 
