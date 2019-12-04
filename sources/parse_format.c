@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 14:49:17 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:17:44 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		parse_format(va_list *argp, char *format, int *len)
 		return (0);
 	*len += 1;
 	set_params(data, format, len);
-
 	if (data->spec == '\0')
 		return (clear_format(data));
 	return (apply_params(argp, data));

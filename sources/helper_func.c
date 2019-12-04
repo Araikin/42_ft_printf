@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/03 18:47:33 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:15:57 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*itoa_base(unsigned long long n, int base, char c)
 	return (str);
 }
 
-void	ft_putnbr_ll(char specifier, unsigned long long n, int base)
+void	putnbr_ll(char specifier, unsigned long long n, int base)
 {
 	char	*hex;
 
@@ -47,6 +47,6 @@ void	ft_putnbr_ll(char specifier, unsigned long long n, int base)
 		return ;
 	}
 	if (n >= (unsigned long long)base)
-		ft_putnbr_ll(specifier, n / base, base);
+		putnbr_ll(specifier, n / base, base);
 	ft_putchar(hex[n % base]);
 }

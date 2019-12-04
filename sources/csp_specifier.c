@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:06:59 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/03 18:51:25 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:06:48 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,25 @@ int		handle_s(va_list *argp, t_format *data)
 	return (count);
 }
 
-void	adjust_p(t_format *data, int p_rem, int w_rem, char *str)
+void	adjust_p(t_format *data, char *str)
 {
 	(data->flags & MINUS) ? (ft_putstr("0x")) : (ft_putstr(""));
-	(data->flags & MINUS) ? (print_rem(p_rem, '0')) : ft_putstr("");
+	(data->flags & MINUS) ? (print_rem(data->p_rem, '0')) : ft_putstr("");
 	(data->flags & MINUS) ? (ft_putstr(str)) : ft_putstr("");
-	(data->flags & MINUS) ? print_rem(w_rem, ' ') : ft_putstr("");
+	(data->flags & MINUS) ? print_rem(data->w_rem, ' ') : ft_putstr("");
 	if ((data->flags && !(data->flags & MINUS)) || !data->flags)
 	{
 		if (data->prec || (!data->prec && !(data->flags & ZERO)))
 		{
-			print_rem(w_rem, ' ');
+			print_rem(data->w_rem, ' ');
 			ft_putstr("0x");
-			print_rem(p_rem, '0');
+			print_rem(data->p_rem, '0');
 			ft_putstr(str);
 		}
 		else if (!data->prec && (data->flags & ZERO))
 		{
 			ft_putstr("0x");
-			print_rem(w_rem, '0');
+			print_rem(data->w_rem, '0');
 			ft_putstr(str);
 		}
 	}
@@ -85,8 +85,6 @@ int		handle_p(va_list *argp, t_format *data)
 {
 	void	*ptr;
 	char	*str;
-	int		w_rem;
-	int		p_rem;
 	int		len;
 
 	ptr = va_arg(*argp, void *);
@@ -98,15 +96,11 @@ int		handle_p(va_list *argp, t_format *data)
 	}
 	len = (int)ft_strlen(str);
 	if (data->prec > len)
-		p_rem = data->prec - len;
-	else
-		p_rem = 0;
-	if (len + p_rem + 2 > data->width)
-		w_rem = 0;
-	else
-		w_rem = data->width - len - p_rem - 2;
-	len = len + 2 + p_rem + w_rem;
-	adjust_p(data, p_rem, w_rem, str);
+		data->p_rem = data->prec - len;
+	if (len + data->p_rem + 2 <= data->width)
+		data->w_rem = data->width - len - data->p_rem - 2;
+	len = len + 2 + data->p_rem + data->w_rem;
+	adjust_p(data, str);
 	return (len);
 }
 

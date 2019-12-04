@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:57:02 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/03 19:00:56 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:13:05 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ouxx_minus(t_format *data, uint64_t n, int base)
 	if (n == 0 && data->prec == -1)
 		ft_putstr("");
 	else
-		ft_putnbr_ll(data->spec, (unsigned long long)n, base);
+		putnbr_ll(data->spec, (unsigned long long)n, base);
 	print_rem(data->w_rem, flag);
 }
 
@@ -65,7 +65,7 @@ void	ouxx_nomin(t_format *data, uint64_t n, int base)
 	if (n == 0 && data->prec == -1)
 		ft_putstr("");
 	else
-		ft_putnbr_ll(data->spec, (unsigned long long)n, base);
+		putnbr_ll(data->spec, (unsigned long long)n, base);
 }
 
 int		adjust_ouxx(t_format *data, uint64_t n, int len, int base)

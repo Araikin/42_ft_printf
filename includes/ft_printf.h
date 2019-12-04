@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 14:38:44 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:14:53 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int					is_length(char *params, int i);
 
 int					handle_c(va_list *argp, t_format *data);
 int					handle_s(va_list *argp, t_format *data);
-void				adjust_p(t_format *data, int p_rem, int w_rem, char *str);
+void				adjust_p(t_format *data, char *str);
 int					handle_p(va_list *argp, t_format *data);
 int					handle_percent(va_list *argp, t_format *data);
 
@@ -82,6 +82,10 @@ void				print_sign(t_format *data, int64_t n, int m, char flag);
 void				di_minus(t_format *data, int64_t n);
 void				di_nominus(t_format *data, int64_t n);
 
+void				print_sign_u(t_format *data, uint64_t n);
+void				ouxx_minus(t_format *data, uint64_t n, int base);
+void				ouxx_nomin(t_format *data, uint64_t n, int base);
+int					adjust_ouxx(t_format *data, uint64_t n, int len, int base);
 int					handle_ouxx(va_list *argp, t_format *data);
 
 int					handle_f(va_list *argp, t_format *data);
@@ -92,7 +96,6 @@ int					ft_numlen(unsigned long long n, int base);
 void				print_rem(int rem, char c);
 
 char				*itoa_base(unsigned long long n, int base, char c);
-void				ft_putnbr_ll(char specifier, unsigned long long n,
-					int base);
+void				putnbr_ll(char specifier, unsigned long long n, int base);
 
 #endif
