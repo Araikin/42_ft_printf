@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/30 15:40:53 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 13:52:12 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@
 # define HH		8
 # define UL		16
 
-# define SPECS	"cspdiouxXfZ%"
+# define SPECS	"cspdiouxXf%"
 
 typedef struct		s_format
 {
-	char			spec;
 	int				length : 5;
 	int				flags : 5;
 	int				prec;
 	int				width;
+	int				p_rem;
+	int				w_rem;
+	char			spec;
 }					t_format;
 
 typedef int			t_specifiers(va_list *argp, t_format *data);
@@ -72,12 +74,25 @@ int					handle_c(va_list *argp, t_format *data);
 int					handle_s(va_list *argp, t_format *data);
 void				adjust_p(t_format *data, int p_rem, int w_rem, char *str);
 int					handle_p(va_list *argp, t_format *data);
+int					handle_percent(va_list *argp, t_format *data);
+
+int					adjust_di(t_format *data, int64_t n, int len);
 int					handle_di(va_list *argp, t_format *data);
+void				print_sign(t_format *data, int64_t n, int m, char flag);
+void				di_minus(t_format *data, int64_t n, int p_rem, int w_rem);
+void				di_nominus(t_format *data, int64_t n, int p_rem, int w_rem);
+
+int					handle_ouxx(va_list *argp, t_format *data);
+
+int					handle_f(va_list *argp, t_format *data);
 
 int					ft_min(int a, int b);
 int					ft_max(int a, int b);
 int					ft_numlen(unsigned long long n, int base);
-char				*itoa_base(unsigned long long n, int base, char c);
 void				print_rem(int rem, char c);
+
+char				*itoa_base(unsigned long long n, int base, char c);
+void				ft_putnbr_ll(char specifier, unsigned long long n,
+					int base);
 
 #endif

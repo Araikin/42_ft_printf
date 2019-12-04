@@ -1,7 +1,8 @@
 NAME		:= 	libftprintf.a
 FLAGS		:=	-Wall -Wextra -Werror
-F_N			:=	ft_printf parse_format verify_params set_params handle_cspdi \
-				helper_func
+F_N			:=	ft_printf parse_format verify_params set_params helper_func \
+				math_func csp_specifier di_specifier ouxx_specifier \
+				f_specifier
 SRC			:=	$(addprefix sources/, $(addsuffix .c, $(F_N)))
 OBJ			:=	$(addprefix objects/, $(addsuffix .o, $(F_N)))
 INCL		:=	includes
@@ -15,7 +16,7 @@ all	: $(NAME)
 
 objects/%.o : sources/%.c
 	@/bin/mkdir -p objects
-	@gcc $(FLAGS) -I $(INCL) -c $< -o $@
+	@gcc $(FLAGS) -I $(INCL) -c $< -o $@ -g
 
 $(NAME)	: $(OBJ)
 	@make -C $(LIB)
@@ -23,7 +24,7 @@ $(NAME)	: $(OBJ)
 	@ranlib $(NAME)
 	
 compile:
-	@gcc -o xx main.c -L . -lftprintf -I $(INCL)
+	@gcc -o xx main.c -L . -lftprintf -I $(INCL) -g
 
 clean:
 	@/bin/rm -rf objects

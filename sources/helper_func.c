@@ -6,59 +6,15 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/30 14:36:36 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/03 18:47:33 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	else
-		return (b);
-}
-
-int		ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-int		ft_numlen(unsigned long long n, int base)
-{
-	int	len;
-
-	len = 0;
-	len = (n == 0) ? 1 : 0;
-	while (n != 0)
-	{
-		n /= base;
-		len++;		
-	}
-	return (len);
-}
-
-int		ft_numlen_int(int n, int base)
-{
-	int len;
-
-	len = 0;
-	len = (n == 0) ? 1 : 0;
-	while (n != 0)
-	{
-		n /= base;
-		len++;
-	}
-	return (len);
-}
-
 char	*itoa_base(unsigned long long n, int base, char c)
 {
-	char	*hex; 
+	char	*hex;
 	char	*str;
 	int		i;
 	int		len;
@@ -79,8 +35,18 @@ char	*itoa_base(unsigned long long n, int base, char c)
 	}
 	return (str);
 }
-void	print_rem(int rem, char c)
+
+void	ft_putnbr_ll(char specifier, unsigned long long n, int base)
 {
-	while (rem--)
-		ft_putchar(c);
+	char	*hex;
+
+	hex = (specifier == 'X') ? "0123456789ABCDEF" : "0123456789abcdef";
+	if (specifier == 'u' && n == 4294967295u)
+	{
+		ft_putstr("4294967295");
+		return ;
+	}
+	if (n >= (unsigned long long)base)
+		ft_putnbr_ll(specifier, n / base, base);
+	ft_putchar(hex[n % base]);
 }

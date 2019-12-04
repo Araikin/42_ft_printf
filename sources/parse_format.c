@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/30 13:36:32 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/03 19:19:58 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@ t_specifiers	*g_dispatch[] = {
 	handle_s,
 	handle_p,
 	handle_di,
-
+	handle_di,
+	handle_ouxx,
+	handle_ouxx,
+	handle_ouxx,
+	handle_ouxx,
+	handle_f,
+	handle_percent
 };
 
 int		parse_format(va_list *argp, char *format, int *len)
@@ -84,7 +90,7 @@ int		apply_params(va_list *argp, t_format *data)
 	len = 0;
 	if (!data)
 		return (0);
-	while (i < 12)
+	while (i < 11)
 	{
 		if (SPECS[i] == data->spec)
 			len = g_dispatch[i](argp, data);

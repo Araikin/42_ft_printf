@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/30 16:40:47 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 13:28:52 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,99 @@
 
 int		main(void)
 {
+    /* Misc. */
+
+	ft_printf("m:%d\n", 34);
+	printf("o:%d\n", 34);
+
+	/*
+    printf("\noctal : %-5o done", 23);
+    ft_printf("\noctal : %-5o done", 23);
+    printf("\noctal : %-5u done", 23);
+    ft_printf("\noctal : %-5u done", 23);
+    printf("\noctal : %-5.8x done", 23);
+    ft_printf("\noctal : %-5.8x done", 23);
+    printf("\nunsigned integer : %lu done", 4294967295);
+    ft_printf("\nunsigned integer : %lu done", 4294967295);
+    printf("\nhex lower : %x done", 225);
+    ft_printf("\nhex lower : %x done", 225);
+    printf("\nhex upper : %X done", 225);
+    ft_printf("\nhex upper : %X done", 225);
+	*/
+    
+    /* percent */
+
+	/*
+	printf("%%\n");
+	ft_printf("%%\n");
+    ft_printf("\nWith width, align and precision: : %% done");
+    ft_printf("\nWith width, align and precision: : %10% done");
+    ft_printf("\nWith width, align and precision: : %-10% done");
+    ft_printf("\nWith multiple specifiers : %% %% %% done");
+
+    printf("\nWith width, align and precision: : %% done");
+    printf("\nWith width, align and precision: : %10% done");
+    printf("\nWith width, align and precision: : %-10% done");
+    printf("\nWith multiple specifiers : %% %% %% done");
+	*/
+
+	/*
+    // flag '0' is ignored when flag '-' is present
+    printf("\nsigned integer : %+020d done", 225);
+    printf("\nsigned integer : %025.20d done", 1);
+    printf("\nsigned integer : %05d done", 1);
+    printf("\nsigned integer : %0+5d done", 1);
+    printf("\nsigned integer : %-25.20d done", 225);
+    printf("\nsigned integer : %.20d done", 1);
+    printf("\nsigned integer : %+5d done", 42);
+    printf("\nsigned integer : %0+5d done", 42);
+    printf("\nsigned integer : %-d done", -42);
+*/
+    /*
+    ft_printf("\noctal : %#o done", 2);
+    ft_printf("\noctal : %#.5o done", 2);
+    ft_printf("\noctal : %#0.5o done", 2);
+    ft_printf("\noctal : %#.7o done", 2);
+    ft_printf("\noctal : %#0.7o done", 2);
+	*/
+	/*
+    printf("\noctal : %#o done", 2);
+    printf("\noctal : %#.5o done", 2);
+    printf("\noctal : %#0.5o done", 2);
+    printf("\noctal : %#.7o done", 2);
+    printf("\noctal : %#0.7o done", 2);
+*/
+	/*
+	ft_printf("\nupper hex : %0-8.3X", 8375);
+    ft_printf("hello, %s.", NULL);
+    ft_printf("%-5c end\n", '\x00');
+    ft_printf("%5c end\n", '\x00');
+    ft_printf("%f\n", 3.14);
+    ft_printf("%lf\n", 3.14);
+    ft_printf("%b\n", 255a);
+    ft_printf("%08b\n", 127);
+    ft_printf("%.8b\n", 127);
+    ft_printf("%-8b\n", 1);
+    ft_printf("%8b\n", 1);
+    ft_printf("%lld", (int64_t)9223372036854775808); //too large to be represented in signed integer type
+	*/
+	/*
+    printf("\nupper hex : %08.3X", 8375);
+    char *str = ft_strdup("\x00");
+    printf("%s\n", str);
+    printf("%-5c end\n", '\x00');
+    printf("%5c end\n", '\x00');
+    printf("%0c", '\x00'); // undefined behavior
+    printf("%lld", -9223372036854775808); //too large to be represented in signed integer type
+*/
+
 
    /* signed integer */
 
-    ft_printf("mine:%10d\n", -42);
-    printf("original:%10d\n", -42);
-
 	/*
+    ft_printf("m:%.0d\n", 0);
+    printf("o:%.0d\n", 0);
+
     ft_printf("\nWith basic specifier length l applied : %ld done", (long int)-2147483647);
     ft_printf("\nWith basic specifier length h applied : %hd done", (short int)-32767);
     ft_printf("\nWith basic specifier length ll applied : %lld done", (long long int)9223372036854775807);
@@ -142,83 +228,5 @@ int		main(void)
     ft_printf("With width, align and precision: : %-5c done\n", '$');
     printf("With width, align and precision: : %-5c done\n", '$');
 	*/
-
-    /* percent */
-
-    /*
-    ft_printf("\nWith width, align and precision: : %% done");
-    ft_printf("\nWith width, align and precision: : %10% done");
-    ft_printf("\nWith width, align and precision: : %-10% done");
-    ft_printf("\nWith multiple specifiers : %% %% %% done");
-	*/
-	/*
-    printf("\nWith width, align and precision: : %% done");
-    printf("\nWith width, align and precision: : %10% done");
-    printf("\nWith width, align and precision: : %-10% done");
-    printf("\nWith multiple specifiers : %% %% %% done");
-    char *n = NULL;
-    printf("\nWith multiple specifiers : %p done", &n);
-*/
-
-    /* Misc. */
-
-	/*
-    printf("\noctal : %-5o done", 23);
-    printf("\noctal : %-5u done", 23);
-    printf("\noctal : %-5.8x done", 23);
-    printf("\noctal : %-5.8X done", 23);
-    printf("\nunsigned integer : %lu done", 4294967295);
-    printf("\nhex lower : %x done", 225);
-    printf("\nhex upper : %X done", 225);
-    
-
-    // flag '0' is ignored when flag '-' is present
-    printf("\nsigned integer : %+020d done", 225);
-    printf("\nsigned integer : %025.20d done", 1);
-    printf("\nsigned integer : %05d done", 1);
-    printf("\nsigned integer : %0+5d done", 1);
-    printf("\nsigned integer : %-25.20d done", 225);
-    printf("\nsigned integer : %.20d done", 1);
-    printf("\nsigned integer : %+5d done", 42);
-    printf("\nsigned integer : %0+5d done", 42);
-    printf("\nsigned integer : %-d done", -42);
-*/
-    /*
-    ft_printf("\noctal : %#o done", 2);
-    ft_printf("\noctal : %#.5o done", 2);
-    ft_printf("\noctal : %#0.5o done", 2);
-    ft_printf("\noctal : %#.7o done", 2);
-    ft_printf("\noctal : %#0.7o done", 2);
-	*/
-	/*
-    printf("\noctal : %#o done", 2);
-    printf("\noctal : %#.5o done", 2);
-    printf("\noctal : %#0.5o done", 2);
-    printf("\noctal : %#.7o done", 2);
-    printf("\noctal : %#0.7o done", 2);
-*/
-	/*
-	ft_printf("\nupper hex : %0-8.3X", 8375);
-    ft_printf("hello, %s.", NULL);
-    ft_printf("%-5c end\n", '\x00');
-    ft_printf("%5c end\n", '\x00');
-    ft_printf("%f\n", 3.14);
-    ft_printf("%lf\n", 3.14);
-    ft_printf("%b\n", 255a);
-    ft_printf("%08b\n", 127);
-    ft_printf("%.8b\n", 127);
-    ft_printf("%-8b\n", 1);
-    ft_printf("%8b\n", 1);
-    ft_printf("%lld", (int64_t)9223372036854775808); //too large to be represented in signed integer type
-	*/
-	/*
-    printf("\nupper hex : %08.3X", 8375);
-    char *str = ft_strdup("\x00");
-    printf("%s\n", str);
-    printf("%-5c end\n", '\x00');
-    printf("%5c end\n", '\x00');
-    printf("%0c", '\x00'); // undefined behavior
-    printf("%lld", -9223372036854775808); //too large to be represented in signed integer type
-*/
 	return (0);
 }

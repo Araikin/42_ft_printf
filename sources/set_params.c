@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:29:56 by asultanb          #+#    #+#             */
-/*   Updated: 2019/11/27 16:20:39 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/03 18:48:18 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	set_precision(char *params, t_format *data, int *pos)
 
 	flag = 0;
 	precision = 0;
-	if (params[*pos] && params[*pos] == '.')	
+	if (params[*pos] && params[*pos] == '.')
 	{
 		flag = 1;
 		*pos += 1;
