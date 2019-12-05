@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 17:33:17 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/05 12:54:16 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,5 @@ char				*itoa_base(unsigned long long n, int base, char c);
 void				putnbr_ll(char specifier, unsigned long long n, int base);
 void				print_rem(int rem, char c);
 int					ft_numlen(unsigned long long n, int base);
-int					ft_fnumlen(long double f);
-
 
 #endif
