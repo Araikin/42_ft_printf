@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 16:40:21 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:33:17 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,12 @@ int					handle_f(va_list *argp, t_format *data);
 
 int					ft_min(int a, int b);
 int					ft_max(int a, int b);
-int					ft_numlen(unsigned long long n, int base);
-void				print_rem(int rem, char c);
 
 char				*itoa_base(unsigned long long n, int base, char c);
 void				putnbr_ll(char specifier, unsigned long long n, int base);
+void				print_rem(int rem, char c);
+int					ft_numlen(unsigned long long n, int base);
+int					ft_fnumlen(long double f);
+
 
 #endif
