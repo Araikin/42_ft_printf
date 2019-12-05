@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 15:17:44 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:39:51 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_specifiers	*g_dispatch[] = {
 	handle_c,
 	handle_s,
 	handle_p,
+	handle_di,
 	handle_di,
 	handle_di,
 	handle_ouxx,
@@ -90,7 +91,7 @@ int		apply_params(va_list *argp, t_format *data)
 	len = 0;
 	if (!data)
 		return (0);
-	while (i < 11)
+	while (i < 12)
 	{
 		if (SPECS[i] == data->spec)
 			len = g_dispatch[i](argp, data);

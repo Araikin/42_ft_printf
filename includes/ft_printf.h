@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 15:14:53 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:40:21 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define HH		8
 # define UL		16
 
-# define SPECS	"cspdiouxXf%"
+# define SPECS	"cspdDiouxXf%"
 
 typedef struct		s_format
 {

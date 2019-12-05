@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:14:01 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 14:59:44 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:43:55 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 int		main(void)
 {
+//	float n = 6;
+
+	printf("%.3f\n", 123.345789);
+	ft_printf("%.3f\n", 123.456789);
+
     /* Misc. */
 
+	/*
 	ft_printf("m:%d\n", 34);
 	printf("o:%d\n", 34);
 
-	/*
     printf("\noctal : %-5o done", 23);
     ft_printf("\noctal : %-5o done", 23);
     printf("\noctal : %-5u done", 23);

@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:07:22 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 15:16:53 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:39:35 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ int		handle_di(va_list *argp, t_format *data)
 	int		len;
 	int		sign;
 
-	if (data->length & L)
+	if (data->spec == 'D')
+		n = va_arg(*argp, long int);
+	else if (data->length & L)
 		n = va_arg(*argp, long int);
 	else if (data->length & LL)
 		n = va_arg(*argp, long long int);
