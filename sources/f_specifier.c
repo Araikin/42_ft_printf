@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 17:01:32 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/05 17:09:15 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/05 17:42:31 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	print_sign_f(t_format *data, int space, int sign)
 	(sign == -1) ? ft_putchar('-') : ft_putstr("");
 }
 
-int	fraction_len(float f)
+unsigned long long fraction_len(long double f)
 {
-	if (f - (int)f == 0.000000)
-		return ((int)f);
+	unsigned long long	n;
+
+	n = f - (unsigned long long int)f;
+	if (n == 0.000000)
+		return ((unsigned long long int)f);
 	return (fraction_len(f * 10));
 }
 
@@ -55,17 +58,17 @@ int		f_prec_zero(t_format *data, long int n, int sign)
 
 int		f_prec(t_format *data, int len, long double f, int sign)
 {
-	char	flag;
-	int		space;
-	int		x;
-	int		i;
+	unsigned long long	x;
+	char				flag;
+	int					space;
+	int					i;
 
 	i = 10;
 	space = (sign == 1 && (data->flags & SPACE || data->flags & PLUS)) ? 1 : 0;
 	flag = (data->flags & ZERO && !(data->flags & MINUS)) ? '0' : ' ';
-	x = fraction_len(f - (long int)f);
-	data->p_rem = (data->p_rem > ft_numlen((unsigned long long)n, 10)) 
-	printf("%i\n", x);
+	x = fraction_len(f * sign - (unsigned long long)(f * sign));
+	data->p_rem = data->prec - ft_numlen(x, 10);
+	printf("fraction: %llu\n", x);
 
 	return (len + 1 + ((sign == -1) ? 1 : 0));
 }
@@ -78,7 +81,7 @@ int		handle_f(va_list *argp, t_format *data)
 	
 	f = (data->length & UL) ? va_arg(*argp, long double) : va_arg(*argp, double);
 	sign = (f < 0) ? -1 : 1;
-	data->p_rem = (data->prec == 0 && data->prec != -1) ? 6 : data->prec;
+	data->prec = (data->prec == 0 && data->prec != -1) ? 6 : data->prec;
 	if (data->prec == -1)
 		return (f_prec_zero(data, (long int)(f + (0.5 * sign)), sign));
 	len = ft_numlen((unsigned long long)((long int)f * sign), 10);
