@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/05 12:54:01 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/06 17:34:46 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ void	putnbr_ll(char specifier, unsigned long long n, int base)
 	char	*hex;
 
 	hex = (specifier == 'X') ? "0123456789ABCDEF" : "0123456789abcdef";
-	if (specifier == 'u' && n == 4294967295u)
-	{
-		ft_putstr("4294967295");
-		return ;
-	}
 	if (n >= (unsigned long long)base)
 		putnbr_ll(specifier, n / base, base);
 	ft_putchar(hex[n % base]);
@@ -55,6 +50,16 @@ void	print_rem(int rem, char c)
 {
 	while (rem--)
 		ft_putchar(c);
+}
+
+long double	get_round(int precision)
+{
+	long double n;
+
+	n = 0.5;
+	while (precision--)
+		n /= 10;
+	return (n);
 }
 
 int		ft_numlen(unsigned long long n, int base)

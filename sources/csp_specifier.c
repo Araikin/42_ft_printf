@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:06:59 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/04 15:06:48 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/06 17:51:26 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int		handle_p(va_list *argp, t_format *data)
 		data->w_rem = data->width - len - data->p_rem - 2;
 	len = len + 2 + data->p_rem + data->w_rem;
 	adjust_p(data, str);
+	free(str);
 	return (len);
 }
 
