@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 17:01:32 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/09 14:19:55 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/09 14:34:12 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,24 @@ int		f_prec_zero(t_format *data, long long int n, int sign, int len)
 
 void	print_f_prec(t_format *data, long double f)
 {
-	long double		x;
+	long double		fraction;
 	int				prec;
 	long long int	n;
 	long double		round;
 
 	prec = data->prec;
 	round = get_round(data->prec);
-	n = (long long int)f; 
-	x = f - n + round;
-	n = n + ((x > 1.0) ? 1 : 0);
-	x = x - ((x > 1.0) ? 1 : 0);
+	n = (long long int)f;
+	fraction = f - n + round;
+	n += ((fraction > 1.0) ? 1 : 0);
+	fraction -= ((fraction > 1.0) ? 1 : 0);
 	putnbr_ll('f', (unsigned long long)n, 10);
 	ft_putchar('.');
 	while (prec--)
 	{
-		x = x * 10;
-		ft_putchar((int)x + '0');
-		x -= (long double)((int)x);
+		fraction *= 10;
+		ft_putchar((int)fraction + '0');
+		fraction -= (long double)((int)fraction);
 	}
 }
 

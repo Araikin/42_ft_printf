@@ -23,9 +23,6 @@ $(NAME)	: $(OBJ)
 	@ar rc $(NAME) $(OBJ) libft/*.o
 	@ranlib $(NAME)
 	
-compile:
-	@gcc -o xx main.c -L . -lftprintf -I $(INCL) -g
-
 clean:
 	@/bin/rm -rf objects
 	@make -C libft clean
