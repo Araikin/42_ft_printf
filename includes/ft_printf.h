@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:40:51 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/06 17:05:36 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/09 14:20:44 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,9 @@ int					handle_ouxx(va_list *argp, t_format *data);
 
 int					handle_f(va_list *argp, t_format *data);
 int					f_prec(t_format *data, int len, long double f, int sign);
-void				print_f_prec(t_format *data, long double f, int sign);
-int					f_prec_zero(t_format *data, long long int n, int sign);
+void				print_f_prec(t_format *data, long double f);
+int					f_prec_zero(t_format *data, long long int n, int sign,
+					int len);
 void				print_fraction(t_format *data, float f, int sign);
 
 char				*itoa_base(unsigned long long n, int base, char c);

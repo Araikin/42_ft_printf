@@ -6,13 +6,13 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:59:37 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/06 17:34:46 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/09 10:04:06 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*itoa_base(unsigned long long n, int base, char c)
+char		*itoa_base(unsigned long long n, int base, char c)
 {
 	char	*hex;
 	char	*str;
@@ -36,7 +36,7 @@ char	*itoa_base(unsigned long long n, int base, char c)
 	return (str);
 }
 
-void	putnbr_ll(char specifier, unsigned long long n, int base)
+void		putnbr_ll(char specifier, unsigned long long n, int base)
 {
 	char	*hex;
 
@@ -46,7 +46,7 @@ void	putnbr_ll(char specifier, unsigned long long n, int base)
 	ft_putchar(hex[n % base]);
 }
 
-void	print_rem(int rem, char c)
+void		print_rem(int rem, char c)
 {
 	while (rem--)
 		ft_putchar(c);
@@ -62,7 +62,7 @@ long double	get_round(int precision)
 	return (n);
 }
 
-int		ft_numlen(unsigned long long n, int base)
+int			ft_numlen(unsigned long long n, int base)
 {
 	int	len;
 

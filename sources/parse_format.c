@@ -6,7 +6,7 @@
 /*   By: asultanb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 13:32:40 by asultanb          #+#    #+#             */
-/*   Updated: 2019/12/06 18:04:47 by asultanb         ###   ########.fr       */
+/*   Updated: 2019/12/09 10:03:17 by asultanb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		parse_format(va_list *argp, char *format, int *len)
 {
 	t_format	*data;
 	char		*result;
-	int			n;	
+	int			n;
 
 	result = NULL;
 	if (!(data = initialize_format()))
